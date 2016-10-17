@@ -4,10 +4,10 @@ import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.hannesdorfmann.annotatedadapter.annotation.ViewField;
 import com.hannesdorfmann.annotatedadapter.annotation.ViewType;
 import com.hannesdorfmann.annotatedadapter.support.recyclerview.SupportAnnotatedAdapter;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -55,10 +55,10 @@ public class ContentListAdapter extends SupportAnnotatedAdapter implements Conte
 
         vh.title.setText(content.title());
 
-        Glide.with(vh.pic.getContext())
+        Picasso.with(vh.pic.getContext())
                 .load(content.pic())
-                .placeholder(R.color.grey)
-                .error(R.color.grey)
+                .fit()
+                .centerCrop()
                 .into(vh.pic);
     }
 }

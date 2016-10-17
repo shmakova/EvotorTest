@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import ru.shmakova.evotortest.R;
-import ru.shmakova.evotortest.ui.fragments.ContentListFragment;
+import ru.shmakova.evotortest.ui.fragments.GroupsPagerFragment;
 
 /**
  * Created by shmakova on 16.10.16.
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.main_frame_layout, new ContentListFragment())
+                    .replace(R.id.main_frame_layout, new GroupsPagerFragment())
                     .commit();
         }
     }

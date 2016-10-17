@@ -18,7 +18,6 @@ import rx.Observable;
 public class ContentListPresenter extends BaseRxPresenter<ContentListView, List<Content>> {
 
     private final NixanService nixanService;
-    private Group currentGroup;
 
     @Inject
     public ContentListPresenter(NixanService nixanService) {
@@ -26,12 +25,7 @@ public class ContentListPresenter extends BaseRxPresenter<ContentListView, List<
     }
 
     public void loadContent(Group group, boolean pullToRefresh) {
-        this.currentGroup = group;
         Observable<List<Content>> observable = nixanService.getContent(group.filename());
         subscribe(observable, pullToRefresh);
-    }
-
-    public void loadContent(boolean pullToRefresh) {
-        loadContent(currentGroup, pullToRefresh);
     }
 }

@@ -1,5 +1,7 @@
 package ru.shmakova.evotortest.data.groups.models;
 
+import android.os.Parcelable;
+
 import com.google.auto.value.AutoValue;
 
 /**
@@ -7,7 +9,7 @@ import com.google.auto.value.AutoValue;
  */
 
 @AutoValue
-public abstract class Group {
+public abstract class Group implements Parcelable {
     public static Group.Builder builder() {
         return new AutoValue_Group.Builder();
     }

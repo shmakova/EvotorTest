@@ -2,6 +2,7 @@ package ru.shmakova.evotortest.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +35,11 @@ import ru.shmakova.evotortest.utils.ErrorMessageDeterminer;
 public class GroupsPagerFragment
         extends BaseLceFragment<LinearLayout, List<Group>, GroupsPagerView, GroupsPagerPresenter>
         implements GroupsPagerView {
+
     @BindView(R.id.pager)
     ViewPager viewPager;
+    @BindView(R.id.tab_layout)
+    TabLayout tabLayout;
 
     @Inject
     ErrorMessageDeterminer errorMessageDeterminer;
@@ -54,7 +58,13 @@ public class GroupsPagerFragment
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         injectDependencies();
-        return inflater.inflate(R.layout.fragment_content_list, container, false);
+        return inflater.inflate(R.layout.fragment_groups_pager, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -70,12 +80,12 @@ public class GroupsPagerFragment
 
     @Override
     public List<Group> getData() {
-        return adapter.getGroups();
+        return ((GroupsFragmentPagerAdapter) viewPager.getAdapter()).getGroups();
     }
 
     @Override
     public void setData(List<Group> data) {
-        viewPager.setAdapter(new GroupsFragmentPagerAdapter(getFragmentManager(), data));
+        viewPager.setAdapter(new GroupsFragmentPagerAdapter(getChildFragmentManager(), data));
     }
 
     @Override

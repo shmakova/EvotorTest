@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 import ru.shmakova.evotortest.data.groups.models.Group;
+import ru.shmakova.evotortest.ui.fragments.ContentListFragmentBuilder;
 
 /**
  * Created by shmakova on 16.10.16.
@@ -22,7 +23,7 @@ public class GroupsFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return null;
+        return new ContentListFragmentBuilder(groups.get(position)).build();
     }
 
     @Override

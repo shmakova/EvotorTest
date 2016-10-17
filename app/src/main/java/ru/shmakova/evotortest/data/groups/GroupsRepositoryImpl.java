@@ -17,6 +17,6 @@ public class GroupsRepositoryImpl implements GroupsRepository {
         groups.add(Group.builder().filename("test1").title("Группа 1").build());
         groups.add(Group.builder().filename("test2").title("Группа 2").build());
         groups.add(Group.builder().filename("test3").title("Группа 3").build());
-        return null;
+        return Observable.just(groups);
     }
 }

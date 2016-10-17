@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hannesdorfmann.fragmentargs.FragmentArgs;
+import com.hannesdorfmann.fragmentargs.annotation.Arg;
+import com.hannesdorfmann.fragmentargs.annotation.FragmentWithArgs;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.data.RetainingLceViewState;
 
@@ -20,6 +23,7 @@ import butterknife.BindView;
 import ru.shmakova.evotortest.App;
 import ru.shmakova.evotortest.R;
 import ru.shmakova.evotortest.data.content.models.Content;
+import ru.shmakova.evotortest.data.groups.models.Group;
 import ru.shmakova.evotortest.di.components.ContentListComponent;
 import ru.shmakova.evotortest.di.modules.ContentListModule;
 import ru.shmakova.evotortest.presentation.presenters.ContentListPresenter;
@@ -32,7 +36,7 @@ import ru.shmakova.evotortest.utils.ErrorMessageDeterminer;
  * Created by shmakova on 16.10.16.
  */
 
-
+@FragmentWithArgs
 public class ContentListFragment
         extends BaseLceFragment<SwipeRefreshLayout, List<Content>, ContentListView, ContentListPresenter>
         implements ContentListView, SwipeRefreshLayout.OnRefreshListener {
@@ -41,6 +45,9 @@ public class ContentListFragment
 
     @Inject
     ErrorMessageDeterminer errorMessageDeterminer;
+
+    @Arg
+    Group group;
 
     ContentListComponent contentListComponent;
     ContentListAdapter adapter;
@@ -63,6 +70,7 @@ public class ContentListFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        FragmentArgs.inject(this);
     }
 
     @Override
@@ -102,7 +110,7 @@ public class ContentListFragment
 
     @Override
     public void loadData(boolean pullToRefresh) {
-        presenter.loadContent(pullToRefresh);
+        presenter.loadContent(group, pullToRefresh);
     }
 
     @Override

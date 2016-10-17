@@ -16,8 +16,10 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:tabBackground="@drawable/tab_color_selector"
         app:tabGravity="fill"
+        app:tabIndicatorHeight="0dp"
         app:tabMaxWidth="0dp"
         app:tabMode="fixed"/>
 

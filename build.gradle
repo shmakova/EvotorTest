@@ -9,7 +9,12 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.2.1'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'me.tatarka:gradle-retrolambda:3.3.0'
-        classpath 'com.noveogroup.android:check:1.2.3'
+        classpath('com.noveogroup.android:check:1.2.3') {
+            exclude module: 'checkstyle'
+            exclude module: 'pmd-java'
+        }
+        classpath 'com.puppycrawl.tools:checkstyle:6.19'
+        classpath 'net.sourceforge.pmd:pmd-java:5.5.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

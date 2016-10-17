@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">EvotorTest</string>
+    <string name="app_name">Evotor Test</string>
     <string name="error_text">Нажмите, чтобы повторить</string>
-    <string name="empty_text">Ничего не найдено. Начните поиск</string>
     <string name="pic">pic</string>
 </resources>
